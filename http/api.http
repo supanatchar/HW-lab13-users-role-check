@@ -1,0 +1,32 @@
+@BASE_URL = http://localhost:3000
+
+### Welcome GET /
+GET {{BASE_URL}}
+
+### users GET /users
+GET {{BASE_URL}}/users
+
+### users POST /users
+POST {{BASE_URL}}/users
+Content-Type: application/json
+
+{
+    "name": "JohnyDev",
+    "email": "Devyjohn@gmail.com",
+    "role": "user"
+}
+
+### users DELETE 
+DELETE {{BASE_URL}}/users/alice@gmail.com 
+x-user-role: user
+
+### users DELETE
+DELETE {{BASE_URL}}/users/alice@gmail.com
+x-user-role: admin
+
+### GET Me (Admin)
+GET {{BASE_URL}}/me
+x-user-role: admin
+
+### GET ME (not-Admin)
+GET {{BASE_URL}}/me
