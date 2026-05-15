@@ -8,7 +8,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(logger);
 
-let users = [
+const users = [
     { name: 'Alice', email: 'alice@gmail.com', role: 'user' },
     { name: 'Bob', email: 'bob@gmail.com', role: 'admin' }
 ];
@@ -25,8 +25,15 @@ app.post('/users', (req, res) => {
 
 app.delete('/users/:email', checkAdmin, (req, res) => {
     const {email} = req.params;
-    users = users.filter(user => user.email !== email);
-    res.json({ message: `Deleted user: ${email}`})
+
+    const index = users.findIndex(u => u.email === email)
+    
+    if(index !== -1) {
+        users.splice(index, 1);
+        res.json({ message: 'User Deleted!'})
+    } else {
+        res.status(404).json({ message: 'User Not Found'})
+    }
 })
 
 app.get('/me', (req, res) => {
