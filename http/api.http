@@ -16,7 +16,7 @@ Content-Type: application/json
     "role": "user"
 }
 
-### users DELETE 
+### users DELETE /users/:email
 DELETE {{BASE_URL}}/users/alice@gmail.com 
 x-user-role: user
 

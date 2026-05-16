@@ -13,6 +13,10 @@ const users = [
     { name: 'Bob', email: 'bob@gmail.com', role: 'admin' }
 ];
 
+app.get('/' , (req, res) => {
+    res.send('Welcome Api v0.1.0')
+})
+
 app.get('/users' , (req, res) => {
     res.json(users);
 })
